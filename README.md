@@ -1,2 +1,3 @@
 # CookieConsent
-Cookie Consent plugin, as ASP.NET MVC/WebForms plugin and OWIN Middleware 
+Cookie Consent plugin, as ASP.NET MVC/WebForms plugin and OWIN Middleware   
+work in progress, will be released to nuget very soon ...
