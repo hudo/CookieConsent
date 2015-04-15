@@ -40,12 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CachedAssetsProvider.cs" />
-    <Compile Include="FileAssetsProvider.cs" />
     <Compile Include="ConsentSettings.cs" />
     <Compile Include="ConsentService.cs" />
     <Compile Include="FileShim.cs" />
-    <Compile Include="IAssetsProvider.cs" />
     <Compile Include="ICookieStorage.cs" />
     <Compile Include="IFileShim.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

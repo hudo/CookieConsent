@@ -8,8 +8,9 @@ namespace CookieConsent.Example.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string lang)
         {
+            ViewBag.Lang = lang;
             return View();
         }
 

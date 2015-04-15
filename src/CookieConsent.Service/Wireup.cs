@@ -30,18 +30,23 @@ namespace CookieConsent.Service
                     {
                         Title = title,
                         Description = description,
-                        LearnMoreLink = learnMoreTitle,
-                        LearnMoreLinkText = learnMoreUrl,
+                        LearnMoreLink = learnMoreUrl,
+                        LearnMoreLinkText = learnMoreTitle,
                         CloseButtonTitle = closeTitle
                     });
                 
                 return this;
             }
 
-            public SettingsWireup WithDefaultContent(string title, string description, string learnMoreTitle, string closeTitle, string learnMoreUrl = null)
+            public SettingsWireup WithDefaultContent(
+                string title = "Cookie Consent", 
+                string description = "This website uses cookies", 
+                string learnMoreTitle = "Learn more", 
+                string closeTitle = "Accept",
+                string learnMoreUrl = "http://en.wikipedia.org/wiki/Directive_on_Privacy_and_Electronic_Communications")
             {
-                if(Settings.LocalizedContentSettings.ContainsKey("default"))
-                    throw new Exception("Default localized content is already configured.");
+                if (Settings.LocalizedContentSettings.ContainsKey("default"))
+                    Settings.LocalizedContentSettings.Remove("default");
 
                 Settings.FallbackCulture = "default";
                 return WithLocalizedContent("default", title, description, learnMoreTitle, closeTitle, learnMoreUrl);

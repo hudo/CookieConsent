@@ -17,8 +17,8 @@ namespace CookieConsent.Example.MVC
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             AspnetCookieConsent.Settings = Wireup.Init()
-                .WithDefaultContent("TITLE", "DESC", "LEARN MORE", "CLOSE")
-                .WithLocalizedContent("hr-HR", "TITLE HR", "DESC HR", "LEARN MORE HR", "CLOSE HR")
+                .WithDefaultContent()
+                .WithLocalizedContent("hr", "TITLE HR", "DESC HR", "LEARN MORE HR", "CLOSE HR")
                 .GetSettings();
 
         }

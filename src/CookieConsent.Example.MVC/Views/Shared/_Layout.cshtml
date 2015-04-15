@@ -31,16 +31,18 @@
     </div>
 <div class="container body-content">
     @RenderBody()
+    <a href="/home/index?lang=hr">Try HR culture</a>
     <hr/>
     <footer>
         <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
     </footer>
 </div>
 
-    @Html.Raw(AspnetCookieConsent.Default.RenderConsent())
+    @Html.Raw(AspnetCookieConsent.Default.RenderConsent(ViewBag.Lang))
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/CookieConsent.js"></script>
 </body>
 </html>

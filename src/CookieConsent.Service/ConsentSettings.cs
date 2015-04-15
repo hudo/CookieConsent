@@ -19,11 +19,10 @@ namespace CookieConsent.Service
             };
         }
 
-        public string JsFileLocation = "/Scripts/CookieConsent.js";
         public string HtmlFileLocation = "/Assets/CookieConsent.html";
 
         public Dictionary<string, LocalizedContent> LocalizedContentSettings;
-        public string FallbackCulture;
+        public string FallbackCulture = "default";
 
         public Dictionary<string, string> GetMappings(string culture)
         {

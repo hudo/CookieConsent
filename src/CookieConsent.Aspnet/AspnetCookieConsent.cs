@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Web;
+﻿using System.Web;
 using CookieConsent.Service;
 
 namespace CookieConsent.Aspnet
@@ -9,17 +8,23 @@ namespace CookieConsent.Aspnet
         private static readonly object Sync = new object();
         private static AspnetCookieConsent _instance;
         
-        [SuppressMessage("ReSharper", "InconsistentNaming")] 
-        private ConsentService ConsentService;
+        private readonly ConsentService _consentService;
+        private readonly IFileShim _fileShim;
+
+        private string _cachedHtmlFileContent;
 
         public static ConsentSettings Settings { get; set; }
+
+        private AspnetCookieConsent(IFileShim fileShim, ConsentService consentService)
+        {
+            _fileShim = fileShim;
+            _consentService = consentService;
+        }
 
         static AspnetCookieConsent()
         {
             Settings = new ConsentSettings();
         }
-
-        private AspnetCookieConsent() { }
 
         public static AspnetCookieConsent Default
         {
@@ -30,40 +35,31 @@ namespace CookieConsent.Aspnet
                     lock (Sync)
                     {
                         var wwwroot = HttpContext.Current.Server.MapPath("\\");
-                        _instance = new AspnetCookieConsent
-                        {
-                            ConsentService = new ConsentService(
-                                new HttpContextCookieStorage(), 
-                                new CachedAssetsProvider(new FileShim(wwwroot), Settings))
-                        };
+                        _instance = new AspnetCookieConsent(
+                            new FileShim(wwwroot),
+                            new ConsentService(new HttpContextCookieStorage()));
+
+                        _instance.PreloadAssets();
                     }
                 }
                 return _instance;
             }
         }
 
-        public static void SetDefaults(IAssetsProvider assetsProvider = null, ICookieStorage cookieStorage = null)
+        private void PreloadAssets()
         {
-            lock (Sync)
-            {
-                var wwwroot = HttpContext.Current.Server.MapPath("\\");
-                _instance = new AspnetCookieConsent
-                {
-                    ConsentService = new ConsentService(
-                        cookieStorage ?? new HttpContextCookieStorage(), 
-                        assetsProvider ?? new CachedAssetsProvider(new FileShim(wwwroot), Settings))
-                };
-            }
+            _cachedHtmlFileContent = _fileShim.ReadAllText(Settings.HtmlFileLocation);
         }
-      
-        public string RenderConsent()
+        
+        /// <summary>
+        /// Renders HTML of a cookie consent with specific culture translation. 
+        /// If no culture info is provided, default culture is used (English)
+        /// </summary>
+        /// <param name="culture">Culture code</param>
+        /// <returns>HTML content of a cookie consent</returns>
+        public string RenderConsent(string culture = "default")
         {
-            return ConsentService.RenderNotificationHtml(Settings, "default");
-        }
-
-        public string RenderConsent(string culture)
-        {
-            return ConsentService.RenderNotificationHtml(Settings, culture);
+            return _consentService.RenderNotificationHtml(Settings, _cachedHtmlFileContent, culture);
         }
         
     }
