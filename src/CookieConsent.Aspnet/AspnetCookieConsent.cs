@@ -59,7 +59,10 @@ namespace CookieConsent.Aspnet
         /// <returns>HTML content of a cookie consent</returns>
         public string RenderConsent(string culture = "default")
         {
-            return _consentService.RenderNotificationHtml(Settings, _cachedHtmlFileContent, culture);
+            if (HttpContext.Current.IsDebuggingEnabled)
+                _cachedHtmlFileContent = _fileShim.ReadAllText(Settings.HtmlFileLocation);
+
+            return _consentService.RenderNotificationHtml(Settings, _cachedHtmlFileContent, culture, HttpContext.Current.IsDebuggingEnabled);
         }
         
     }
