@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using CookieConsent.Example.MVC.Models;
 
 namespace CookieConsent.Example.MVC.Controllers
 {
@@ -10,22 +7,8 @@ namespace CookieConsent.Example.MVC.Controllers
     {
         public ActionResult Index(string lang)
         {
-            ViewBag.Lang = lang;
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            var model = new HomeViewModel {Culture = lang};
+            return View(model);
         }
     }
 }

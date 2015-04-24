@@ -2,9 +2,11 @@
     var cookieConsent = $('#CookieConsent');
     var closeButton = $('#ConsentClose');
 
+    if (cookieConsent.length === 0) return;
+
     var originalBottomPadding = $('body').css('padding-bottom');
 
-    $('body').css({ 'padding-bottom': '125px' });
+    $('body').css({ 'padding-bottom': cookieConsent.height()+'px' });
 
     var closeNotification = function () {
         cookieConsent.hide();

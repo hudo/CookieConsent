@@ -20,12 +20,14 @@ namespace CookieConsent.Service
         {
             var cookieContent = _storage.Read(COOKIE_KEY);
 
-            return string.IsNullOrEmpty(cookieContent) ? GenerateConsentHtml(settings, htmlContent, culture, isDebug) : string.Empty;
+            return string.IsNullOrEmpty(cookieContent) 
+                ? GenerateConsentHtml(settings, htmlContent, culture, isDebug) 
+                : string.Empty;
         }
 
         private string GenerateConsentHtml(ConsentSettings settings, string htmlContent, string culture, bool isDebug)
         {
-            if (string.IsNullOrWhiteSpace(culture) || !CachedConsentHtml.ContainsKey(culture))
+            if (string.IsNullOrWhiteSpace(culture) || !settings.LocalizedContentSettings.ContainsKey(culture)) 
                 culture = settings.FallbackCulture;
 
             if (isDebug) return ApplyTemplate(settings, htmlContent, culture);
@@ -36,7 +38,7 @@ namespace CookieConsent.Service
         private static string ApplyTemplate(ConsentSettings settings, string htmlContent, string culture)
         {
             var template = htmlContent;
-            var mappings = settings.GetMappings(culture) ?? settings.GetMappings(settings.FallbackCulture);
+            var mappings = settings.GetMappings(culture.ToLower());
 
             if (mappings == null) throw new Exception("Can't find culture and fallback culture");
 

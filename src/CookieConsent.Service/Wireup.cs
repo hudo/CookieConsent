@@ -25,7 +25,8 @@ namespace CookieConsent.Service
 
             public SettingsWireup WithLocalizedContent(string culture, string title, string description, string learnMoreTitle, string closeTitle, string learnMoreUrl = null)
             {
-                Settings.LocalizedContentSettings.Add(culture,
+                Settings.LocalizedContentSettings.Add(
+                    culture.ToLower(),
                     new ConsentSettings.LocalizedContent()
                     {
                         Title = title,
