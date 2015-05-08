@@ -3,6 +3,8 @@ using CookieConsent.Service;
 
 namespace CookieConsent.Aspnet
 {
+
+
     public sealed class AspnetCookieConsent
     {
         private static readonly object Sync = new object();
@@ -38,7 +40,7 @@ namespace CookieConsent.Aspnet
                         _instance = new AspnetCookieConsent(
                             new FileShim(wwwroot),
                             new ConsentService(new HttpContextCookieStorage()));
-
+                            
                         _instance.PreloadAssets();
                     }
                 }

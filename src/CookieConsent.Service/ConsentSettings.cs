@@ -20,10 +20,11 @@ namespace CookieConsent.Service
         }
 
         public string HtmlFileLocation = "/Assets/CookieConsent.html";
-
+        public string JavascriptFileLocation = "<script src=\"/Scripts/CookieConsent.js\"></script>";
+        
         public Dictionary<string, LocalizedContent> LocalizedContentSettings;
         public string FallbackCulture = "default";
-
+        
         public Dictionary<string, string> GetMappings(string culture)
         {
             if (!LocalizedContentSettings.ContainsKey(culture))

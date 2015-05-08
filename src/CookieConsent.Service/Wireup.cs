@@ -58,6 +58,18 @@ namespace CookieConsent.Service
                 Settings.FallbackCulture = culture;
                 return this;
             }
+
+            public SettingsWireup WithConsentHtml(string htmlLocation)
+            {
+                Settings.HtmlFileLocation = htmlLocation;
+                return this;
+            }
+
+            public SettingsWireup WithJavascriptLocation(string jsLocation)
+            {
+                Settings.JavascriptFileLocation = jsLocation;
+                return this;
+            }
         }
     }
 }

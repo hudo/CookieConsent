@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookieConsent.Service", "CookieConsent.Service\CookieConsent.Service.csproj", "{63BA4CD5-A522-4AF9-9352-1C3EDA877F10}"
 EndProject
@@ -21,13 +21,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookieConsent.Aspnet", "Coo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookieConsent.Example.MVC", "CookieConsent.Example.MVC\CookieConsent.Example.MVC.csproj", "{242FDC67-EC42-4876-8F3D-064FF26F6A0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookieConsent.OWIN.Microsoft", "CookieConsent.OWIN.Microsoft\CookieConsent.OWIN.Microsoft.csproj", "{449277DC-D254-427F-A5EE-DF01CE7F05D9}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{1F1F2A3F-A144-437A-A16E-FA2EA3813C6D}"
 	ProjectSection(SolutionItems) = preProject
 		Assets\CookieConsent.html = Assets\CookieConsent.html
 		Assets\CookieConsent.js = Assets\CookieConsent.js
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookieConsent.OWIN", "CookieConsent.OWIN\CookieConsent.OWIN.csproj", "{6307FC49-F211-418D-938A-C6AA5707A658}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CookieConsent.Example.OWIN", "CookieConsent.Example.OWIN\CookieConsent.Example.OWIN.csproj", "{65B6A4D9-5BC1-4C3C-B313-80B1DBF70187}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +49,14 @@ Global
 		{242FDC67-EC42-4876-8F3D-064FF26F6A0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{242FDC67-EC42-4876-8F3D-064FF26F6A0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{242FDC67-EC42-4876-8F3D-064FF26F6A0C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{449277DC-D254-427F-A5EE-DF01CE7F05D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{449277DC-D254-427F-A5EE-DF01CE7F05D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{449277DC-D254-427F-A5EE-DF01CE7F05D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{449277DC-D254-427F-A5EE-DF01CE7F05D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6307FC49-F211-418D-938A-C6AA5707A658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6307FC49-F211-418D-938A-C6AA5707A658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6307FC49-F211-418D-938A-C6AA5707A658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6307FC49-F211-418D-938A-C6AA5707A658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65B6A4D9-5BC1-4C3C-B313-80B1DBF70187}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65B6A4D9-5BC1-4C3C-B313-80B1DBF70187}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65B6A4D9-5BC1-4C3C-B313-80B1DBF70187}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65B6A4D9-5BC1-4C3C-B313-80B1DBF70187}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
